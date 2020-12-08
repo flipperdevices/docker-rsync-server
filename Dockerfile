@@ -1,6 +1,6 @@
 FROM alpine:3.10
 
-RUN apk add --no-cache bash rssh
+RUN apk add --no-cache bash rssh rsync
 
 RUN echo -e "muchtooeasytoguess\nmuchtooeasytoguess\n" | adduser -u 1000 -h /home/data -s /usr/bin/rssh data
 
