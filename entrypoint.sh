@@ -6,8 +6,8 @@ DATA_DIR=/home/data
 HOST_KEYS_DIR_PREFIX=/var/local
 HOST_KEYS_DIR="$HOST_KEYS_DIR_PREFIX/etc/ssh"
 
-# This won't be executed if keys already exist (i.e. from a volume)
 mkdir -p "$HOST_KEYS_DIR"
+ssh-keygen -A -f "$HOST_KEYS_DIR_PREFIX"
 
 if [[ -n "${AUTHORIZED_KEYS:-}" ]]; then
   echo "$AUTHORIZED_KEYS" >> "$AUTHORIZED_KEYS_FILE"
