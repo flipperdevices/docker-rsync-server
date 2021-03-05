@@ -16,6 +16,13 @@ else
   exit 1
 fi
 
+if [[ -n "${ALLOWED_OPTIONS:-}" ]]; then
+  echo -e "$ALLOWED_OPTIONS\n" >> /etc/rssh.conf
+else
+  >&2 echo "Error! Missing ALLOWED_OPTIONS variable."
+  exit 1
+fi
+
 if [[ "$(stat -c %U:%G "$DATA_DIR")" != "$DATA_USER:$DATA_USER" ]]; then
   >&2 echo Changing owner of "$DATA_DIR" to "$DATA_USER:$DATA_USER"
   chown "$DATA_USER":"$DATA_USER" "$DATA_DIR"
