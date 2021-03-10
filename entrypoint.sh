@@ -10,7 +10,7 @@ mkdir -p "$HOST_KEYS_DIR"
 ssh-keygen -A -f "$HOST_KEYS_DIR_PREFIX"
 
 if [[ -n "${AUTHORIZED_KEYS:-}" ]]; then
-  echo "$AUTHORIZED_KEYS" >> "$AUTHORIZED_KEYS_FILE"
+  echo -e "$AUTHORIZED_KEYS" >> "$AUTHORIZED_KEYS_FILE"
 else
   >&2 echo "Error! Missing AUTHORIZED_KEYS variable."
   exit 1
